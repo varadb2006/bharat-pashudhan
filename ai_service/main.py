@@ -26,11 +26,14 @@ NORM_STD     = metadata["normalisation_std"]
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"  Inference device: {DEVICE}")
 
-model = models.efficientnet_b0(weights=None)
+model = models.efficientnet_b4(weights=None)
 num_features = model.classifier[1].in_features
 model.classifier = nn.Sequential(
-    nn.Dropout(p=0.3, inplace=True),
-    nn.Linear(num_features, NUM_CLASSES),
+    nn.Dropout(p=0.4, inplace=True),
+    nn.Linear(num_features, 512),
+    nn.RelU(inplace=True),
+    nn.Dropout(p=0.3),
+    nn.Linear(512, NUM_CLASSES),
 )
 
 model.load_state_dict(
