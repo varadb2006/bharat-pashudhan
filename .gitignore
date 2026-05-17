@@ -1,0 +1,58 @@
+# ============================================================
+# .gitignore — Bharat Pashudhan
+# ============================================================
+
+# Python virtual environment
+venv/
+env/
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Model files — too large for GitHub (use Google Drive)
+*.pt
+*.pth
+*.onnx
+
+# Dataset files — too large for GitHub
+*.zip
+*.tar
+*.gz
+
+# Training images
+*.jpg
+*.jpeg
+*.png
+*.gif
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+*.ipynb
+
+# Node modules (for future React frontend)
+node_modules/
+npm-debug.log
+
+# Environment variables — never push secrets
+.env
+.env.local
+.env.production
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# FastAPI / uvicorn logs
+*.log
+
+# Model metadata (optional — remove these two lines if you want to push them)
+# model_metadata.json
+# class_names.txt
