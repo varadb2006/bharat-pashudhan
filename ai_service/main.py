@@ -11,8 +11,8 @@ from pathlib import Path
 
 
 MODEL_DIR      = Path("model")
-MODEL_PATH     = MODEL_DIR / "bpa.pt"
-METADATA_PATH  = MODEL_DIR / "model_metadata.json"
+MODEL_PATH     = MODEL_DIR / "bpa_b4_final.pt"
+METADATA_PATH  = MODEL_DIR / "model_metadata (1).json"
 
 with open(METADATA_PATH, "r") as f:
     metadata = json.load(f)
@@ -31,7 +31,7 @@ num_features = model.classifier[1].in_features
 model.classifier = nn.Sequential(
     nn.Dropout(p=0.4, inplace=True),
     nn.Linear(num_features, 512),
-    nn.RelU(inplace=True),
+    nn.ReLU(inplace=True),
     nn.Dropout(p=0.3),
     nn.Linear(512, NUM_CLASSES),
 )
@@ -80,7 +80,7 @@ class PredictionResponse(BaseModel):
 def health_check():
     return {
         "status"     : "online",
-        "model"      : "EfficientNet-B0",
+        "model"      : "EfficientNet-B4",
         "breeds"     : NUM_CLASSES,
         "device"     : str(DEVICE)
     }
