@@ -16,7 +16,7 @@ Built for field-level agricultural workers across India.
 
 ## Model Performance
 - Training images: 14,876 (deduplicated)
-- Validation accuracy: 61.5%+ (Phase 3 in progress)
+- Validation accuracy: 63.3%
 - Architecture: EfficientNet-B4 + Deep Classifier Head
 
 ## Project Status

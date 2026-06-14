@@ -130,7 +130,7 @@ async def predict_breed(
         return PredictionResponse(
             success            = True,
             top_predictions    = predictions,
-            model_version      = "1.0.0"
+            model_version      = "2.0.0"
         )
 
     except Exception as e:

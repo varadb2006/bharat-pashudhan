@@ -53,6 +53,4 @@ Thumbs.db
 # FastAPI / uvicorn logs
 *.log
 
-# Model metadata (optional — remove these two lines if you want to push them)
-# model_metadata.json
-# class_names.txt
+backend/uploads/
