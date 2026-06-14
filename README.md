@@ -24,8 +24,8 @@ Built for field-level agricultural workers across India.
 - [x] Module 2: Dataset Collection & Merging
 - [x] Module 3: Model Training (EfficientNet-B4)
 - [x] Module 4: FastAPI Inference Server
-- [ ] Module 5: MySQL Database
-- [ ] Module 6: Express Backend
+- [x] Module 5: MySQL Database
+- [x] Module 6: Express Backend
 - [ ] Module 7: React UI
 - [ ] Module 8: Full Integration
 
