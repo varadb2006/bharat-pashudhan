@@ -1,12 +1,12 @@
 const express = require('express');
-const rouster = express.Router();
+const router = express.Router();
 const db = require('../config/db');
 const axios = require('axios');
 const multer = require('multer');
 const FormData  = require('form-data');
 const path = require('path');
 const fs = require('fs');
-const router = require('./breeds');
+// const router = require('./breeds');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -23,7 +23,7 @@ const storage = multer.diskStorage({
 });
 
 const fileFilter = (req, file, cb) => {
-    const allowed = ['image/jpeg', 'imahge/png', 'image/jpg', 'image/webp'];
+    const allowed = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'];
     if(allowed.includes(file.mimetype)) {
         cb(null, true);
     } else {
@@ -46,8 +46,8 @@ router.post('/', upload.single('image'), async (req, res) => {
             });
         }
 
-        const FormData = new  FormData();
-        FormData.append(
+        const formData = new  FormData();
+        formData.append(
             'file',
             fs.createReadStream(req.file.path),
             req.file.originalname
@@ -91,7 +91,7 @@ router.post('/', upload.single('image'), async (req, res) => {
 
             const suggestions = breedNames.map(name => ({
                 breed : name,
-                type : metaMap[name]?.type || createBrotliDecompress,
+                type : metaMap[name]?.type || 'cattle',
                 purpose: metaMap[name]?.purpose || 'dual'
             }));
 
@@ -106,7 +106,7 @@ router.post('/', upload.single('image'), async (req, res) => {
             console.error('POST /predictions error: ', err.message);
             res.status(500).json({
                 success : false,
-                measure: 'SOmething went wrong. Please try again.'
+                measure: 'Something went wrong. Please try again.'
             });
         }
 });
@@ -119,7 +119,7 @@ router.get('/', async (req, res) => {
 
         const [rows] = await db.query(
             `SELECT p.id, p.top_breed, p.second_breed, p.third_breed,
-                    p.location_name, p.notes, p.worker_confirmed,
+                    p.location_name, p.notes, 
                     p.created_at, w.name AS worker_name
             FROM predictions p
             LEFT JOIN field_workers w ON p.worker_id = w.id
@@ -164,7 +164,7 @@ router.get('/stats', async (req, res) => {
     const [[totals]] = await db.query(
       `SELECT
          COUNT(*) AS total_predictions,
-         COUNT(DISTINCT worker_id) AS active_workers,
+         COUNT(DISTINCT worker_id) AS active_workers
       FROM predictions`
     );
 

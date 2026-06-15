@@ -43,8 +43,6 @@ router.get("/:name", async (req, res) => {
     const [sightings] = await db.query(
       `SELECT
          total_identificationS AS total_identifications,
-         confirmed_correct,
-         confirmed_wrong,
          last_seen
        FROM breed_stats
        WHERE BREED_NAME = ?`,
@@ -56,8 +54,6 @@ router.get("/:name", async (req, res) => {
       breed    : rows[0],
       sightings: sightings[0] || {
         total_identifications: 0,
-        confirmed_correct: 0,
-        confirmed_wrong: 0,
         last_seen: null
       }
   });
