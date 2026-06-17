@@ -19,7 +19,7 @@ export default function BreedCard({ breed, type, purpose, originState }) {
 
 
   return (
-    <div className="bg-surface border border-line rounded-2x1 overflow-hidden transition-transform hover:scale-[1.02] hover:border-line/80">
+    <div className="bg-surface border border-line rounded-2xl overflow-hidden transition-transform hover:scale-[1.02] hover:border-line/80">
         <div className="relative h-32 flex items-end p-4 overflow-hidden" style = {{backgroundColor: sig.color}}>
             {positions.map((pos, i) => sig.pattern === 'organic' ? (
                 <div key={i} className="absolute rounded-full opactiy-25" style = {{ top: pos.top, left : pos.left, width :`${40+i*25}px`, height: `${40+i*25}px`, backgroundColor : sig.colorSoft,}} />
@@ -33,7 +33,7 @@ export default function BreedCard({ breed, type, purpose, originState }) {
         </div>
 
         <div className="p-4">
-            <h3 className="font-display text-2x1 font-bold text-ink mb-1">
+            <h3 className="font-display text-2xl font-bold text-ink mb-1">
                 {breed}
             </h3>
             {originState && (<p className="text-sm text-muted">{originState}</p>)}
