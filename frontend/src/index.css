@@ -3,12 +3,14 @@
 
 
 @theme {
-  --color-canvas : #obod10;
-  --color-surface : #15181d;
-  --color-surfaceAlt : #1e2228;
-  --color-line : #2a2f37;
-  --color-ink : #f5f6f7;
-  --color-muted : #9aa1ac;
+  --color-canvas : #fafaf8;
+  --color-surface : #ffffff;
+  --color-surfaceAlt : #f3f4f6;
+  --color-line : #e5e7eb;
+  --color-ink : #1a1a1a;
+  --color-muted : #6b7280;
+  --color-accent : #d97706;
+  --color-accentAlt : #15803d;
   --font-display : 'Space Grotesk', sans-serif;
   --font-body : 'Inter', sans-serif;
 }
@@ -19,9 +21,9 @@ html, body #root {
 
 
 body {
-  background-color: #0b0d10;
-  color: #f5f6f7;
-  font-family: 'Inter', sans-serif;
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-body);
   margin: 0;
 }
 

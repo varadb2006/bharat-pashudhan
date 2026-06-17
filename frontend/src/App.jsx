@@ -1,14 +1,14 @@
-import Header from './components/Header';
+// import Header from './components/Header';
 import Identify from './pages/Identify';
+import { Routes, Route } from 'react-router-dom';
+import Landing from './pages/Landing';
 
 function App() {
-  
-
   return (
-    <div className='min-h0screen bg-canvas'>
-        <Header />
-        <Identify />
-    </div>
+    <Routes>
+      <Route path="/" element={<Landing />} />
+      <Route path="/identify" element={<Identify />} />
+    </Routes>
   );
 }
 
