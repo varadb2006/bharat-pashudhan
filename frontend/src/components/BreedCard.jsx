@@ -19,21 +19,21 @@ export default function BreedCard({ breed, type, purpose, originState }) {
 
 
   return (
-    <div className="bg-surface border border-line rounded-2xl overflow-hidden transition-transform hover:scale-[1.02] hover:border-line/80">
+    <div className="bg-surface border border-line rounded-2xl overflow-hidden transition-all hover:translate-y-0.5 hover:border-accent/30">
         <div className="relative h-32 flex items-end p-4 overflow-hidden" style = {{backgroundColor: sig.color}}>
             {positions.map((pos, i) => sig.pattern === 'organic' ? (
-                <div key={i} className="absolute rounded-full opactiy-25" style = {{ top: pos.top, left : pos.left, width :`${40+i*25}px`, height: `${40+i*25}px`, backgroundColor : sig.colorSoft,}} />
+                <div key={i} className="absolute rounded-full" style = {{ top: pos.top, left : pos.left, width :`${40+i*25}px`, height: `${40+i*25}px`, backgroundColor : sig.colorSoft, opacity : 0.35}} />
             ) : (
-                <div key={i} className="absolute  opactiy-25" style = {{ top: pos.top, left : pos.left, width :`${50+i*20}px`, height: `${50+i*20}px`, backgroundColor : sig.colorSoft, transform: 'rotate(35deg)',}} />
+                <div key={i} className="absolute" style = {{ top: pos.top, left : pos.left, width :`${50+i*20}px`, height: `${50+i*20}px`, backgroundColor : sig.colorSoft, transform: 'rotate(35deg)', opacity : 0.35,}} />
             ))}
-            <Icon className="absolute top-3 right-3 opacity-70" size={20} color={sig.colorSoft} />
-            <span className="relative text-xs font-medium uppercase tracking-wider" style={{color : sig.colorSoft}} >
+            <Icon className="absolute top-3 right-3" size={18} color="white"  opacity={0.8}/>
+            <span className="relative text-xs font-medium uppercase tracking-wider text-white/80">
                 {type} &middot; {purpose}
             </span>
         </div>
 
-        <div className="p-4">
-            <h3 className="font-display text-2xl font-bold text-ink mb-1">
+        <div className="p-4 bg-surface">
+            <h3 className="font-display text-xl font-bold text-ink mb-0.5">
                 {breed}
             </h3>
             {originState && (<p className="text-sm text-muted">{originState}</p>)}
