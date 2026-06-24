@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Upload, Loader2, ArrowLeft, RefreshCw, Sparkles } from "lucide-react";
 import BreedCard from "../components/BreedCard";
+import { useAIStatus } from "../hooks/useAIStatus";
 
 export default function Identify() {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ export default function Identify() {
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
   const [dragOver, setDragOver] = useState(false);
+  const aiStatus = useAIStatus();
 
   const handleFileChange = (e) => {
     const selected = e.target.files[0];
@@ -76,8 +78,8 @@ export default function Identify() {
             Breed identification
           </p>
         </div>
-        <div className="flex items-center gap-1.5 text-xs text-muted bg-surfaceAlt border border-line rounded-full px-3 py-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+        <div className={`flex items-center gap-1.5 text-xs border  rounded-full px-3 py-1.5 transition-colors ${aiStatus === 'online' ? 'text-green-700 bg-green-50 border-green-200' : aiStatus === 'offline' ? 'text-red-700 bg-red-50 border-red-200' : 'text-muted bg-surfaceAlt border-line'}`}>
+          <span className={`w-1.5 h-1.5 rounded-full  ${aiStatus === 'online' ? 'bg-green-500 animate-pulse' : aiStatus === 'offline' ? 'bg-red-500' : 'bg-yellow-400 animate-pulse'} `} />
           AI Ready
         </div>
       </header>
