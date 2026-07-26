@@ -18,7 +18,7 @@ export default function Landing() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-canvas flex flex-col">
+    <div className="min-h-screen  bg-canvas flex flex-col">
       <header className="fixed top-0 left-0 right-0 z-50 border-b border-line/60 bg-white/80 backdrop-blur-md px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 rounded-full bg-accent" />
