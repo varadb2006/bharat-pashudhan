@@ -19,46 +19,48 @@ export default function Landing() {
 
   return (
     <div className="min-h-screen bg-canvas flex flex-col">
-      <header className="fixed top-0 left-0 right-0 z-50 border-b border-line/60 bg-white/80 backdrop-blur-md px-6 py-4 flex items-center justify-between">
+      <header className="fixed top-0 left-0 right-0 z-50 border-b border-line/60 bg-white/80 backdrop-blur-md px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 rounded-full bg-accent" />
-          <span className="font-display font-bold text-ink text-lg">
+          <span className="font-display font-bold text-ink text-base sm:text-lg">
             Bharat Pashudhan
           </span>
         </div>
-        <button onClick={() => navigate('/identify')} className="flex items-center gap-2 bg-accent hover:bg-accent/90 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors">
-          Start identifying
-          <ArrowRight size={15} />
+        <button onClick={() => navigate('/identify')} className="flex items-center gap-1.5 sm:gap-2 bg-accent hover:bg-amber-600 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors">
+          <span className='hidden sm:inline'>Start identifying </span>
+          <span className='sm:hidden'>Identify </span>
+
+          <ArrowRight size={15} />  
         </button>
       </header>
 
-      <section className="relative h-screen overflow-hidden">
+      <section className="relative min-h-screen sm:h-screen overflow-hidden">
         <div ref={heroRef} className="absolute inset-0 w-full" style={{ height: '110%', top: '-5%' }}>
           <img src={heroImg} alt="Indigenous cattle in Indian field" className="w-full h-full object-cover" />
           <div className="absolute inset-0" style={{background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.15) 100%)'}} />
         </div>
-        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 pt-16">
-          <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 text-xs text-white/90 font-medium mb-8 tracking-wide uppercase">
+        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-24 sm:pt-16">
+          <div className="hidden sm:inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 text-xs text-white/90 font-medium mb-6 tracking-wide uppercase">
             <MapPin size={11} />
-            Official field identification tool · India
+            Field identification tool · India
           </div>
-          <h1 className="font-display font-bold text-white text-5xl md:text-7xl leading-[1.05] max-w-3xl mb-6 tracking-tight">
+          <h1 className="font-display font-bold text-white text-3xl sm:text-5xl md:text-6xl leading-tight max-w-3xl mb-4 tracking-tight">
             Identify Indigenous<br />
             <span className="text-amber-400">Cattle</span>{' '}
             &amp;{' '}
             <span className="text-green-400">Buffalo</span>
           </h1>
 
-          <p className="text-white/75 text-lg md:text-xl max-w-xl mb-10 leading-relaxed">
+          <p className="text-white/75 text-sm sm:text-lg max-w-sm sm:max-w-xl mb-8 leading-relaxed px-2">
             Upload a photo. Get instant breed suggestions across 66 indigenous breeds recognised by the Government of India.
           </p>
-          <button onClick={() => navigate('/identify')} className="group bg-accent hover:bg-amber-600 text-white font-display font-bold px-10 py-4 rounded-xl text-lg transition-all flex items-center gap-3 shadow-lg shadow-amber-900/30 hover:shadow-xl hover:shadow-amber-900/40 hover:-translate-y-0.5" >
+          <button onClick={() => navigate('/identify')} className="group bg-accent hover:bg-amber-600 text-white font-display font-bold w-full sm:w-auto px-8 py-4 rounded-xl text-base sm:text-lg transition-all flex items-center justify-center  gap-3 shadow-lg shadow-amber-900/30 hover:shadow-xl hover:shadow-amber-900/40 hover:-translate-y-0.5" >
             Identify a breed
-            <ArrowRight size={20}
+            <ArrowRight size={18}
               className="group-hover:translate-x-1 transition-transform" />
           </button>
 
-          <p className="text-white/50 text-sm mt-4">
+          <p className="text-white/50 text-xs sm:text-sm mt-4">
             No account needed · Works on any mobile browser
           </p>
         </div>
@@ -70,7 +72,7 @@ export default function Landing() {
       </section>
       
       <div className="border-y border-line bg-surface">
-        <div className="max-w-3xl mx-auto px-6 py-8 grid grid-cols-3 divide-x divide-line">
+        <div className="max-w-3xl mx-auto px-6 py-6 grid grid-cols-3 sm:divide-x divide-line">
           {[
             { value: '66',     label: 'Breeds covered',
               sub: 'ICAR recognised' },
@@ -79,14 +81,14 @@ export default function Landing() {
             { value: '17',     label: 'Buffalo breeds',
               sub: 'Bubalus bubalis' },
           ].map(stat => (
-            <div key={stat.label} className="text-center px-4">
-              <p className="font-display font-bold text-3xl text-ink">
+            <div key={stat.label} className="text-center px-2 sm:px-4 py-2">
+              <p className="font-display font-bold text-2xl sm:text-3xl text-ink">
                 {stat.value}
               </p>
-              <p className="text-sm font-medium text-ink mt-0.5">
+              <p className="text-xs sm:text-sm font-medium text-ink mt-0.5">
                 {stat.label}
               </p>
-              <p className="text-xs text-muted mt-0.5 italic">
+              <p className="text-xs text-muted mt-0.5 italic hidden sm:block">
                 {stat.sub}
               </p>
             </div>
